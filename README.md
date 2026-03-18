@@ -49,6 +49,22 @@ The runner uses the `?matching=true` opportunities page by default because the p
 docker compose up --build -d
 ```
 
+## Run locally (without Docker)
+If you prefer to run the runner directly on your host machine (e.g., for debugging or to see the browser window):
+
+1. **Setup environment** (if not already done for manual login):
+   ```bash
+   python3 -m venv .venv
+   ./.venv/bin/pip install -r requirements.txt
+   ./.venv/bin/python -m playwright install chromium
+   ```
+
+2. **Run the script**:
+   ```bash
+   ./scripts/run_local_autoapply.sh
+   ```
+   This script will use `./data/browser-profile` for the session and `./data/state-local.json` for tracking. By default, it runs with `HEADLESS=false` so you can watch the automation.
+
 ## Watch logs
 ```bash
 docker compose logs -f autoapply
